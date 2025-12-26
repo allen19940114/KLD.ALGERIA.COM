@@ -1,0 +1,189 @@
+{
+  "common": {
+    "loading": "Chargement...",
+    "error": "Une erreur s'est produite",
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "delete": "Supprimer",
+    "edit": "Modifier",
+    "add": "Ajouter",
+    "search": "Rechercher",
+    "submit": "Soumettre",
+    "back": "Retour",
+    "next": "Suivant",
+    "previous": "Précédent",
+    "readMore": "Lire la suite",
+    "viewAll": "Voir tout",
+    "learnMore": "En savoir plus",
+    "getStarted": "Commencer",
+    "contactUs": "Contactez-nous"
+  },
+  "nav": {
+    "home": "Accueil",
+    "about": "À propos",
+    "aboutCompany": "Profil de l'entreprise",
+    "aboutHistory": "Notre histoire",
+    "aboutCulture": "Culture d'entreprise",
+    "aboutTeam": "Notre équipe",
+    "services": "Services",
+    "products": "Produits",
+    "projects": "Projets",
+    "news": "Actualités",
+    "contact": "Contact"
+  },
+  "home": {
+    "hero": {
+      "title": "KLD Algérie",
+      "subtitle": "Solutions d'Intelligence Numérique",
+      "description": "Premier fournisseur de solutions technologiques numériques en Algérie, accompagnant les entreprises avec des solutions innovantes pour l'industrie pétrolière et gazière."
+    },
+    "about": {
+      "title": "À propos de KLD Algérie",
+      "description": "Kunlun Digital Technology (KLD) Algérie est une filiale de China National Petroleum Corporation, dédiée à fournir des solutions numériques de classe mondiale pour le secteur de l'énergie."
+    },
+    "services": {
+      "title": "Nos Services",
+      "description": "Solutions numériques complètes pour l'industrie pétrolière et gazière"
+    },
+    "projects": {
+      "title": "Projets en vedette",
+      "description": "Découvrez nos réalisations réussies"
+    },
+    "news": {
+      "title": "Dernières actualités",
+      "description": "Restez informé de nos derniers développements"
+    },
+    "partners": {
+      "title": "Nos Partenaires",
+      "description": "La confiance des leaders de l'industrie"
+    },
+    "cta": {
+      "title": "Prêt à transformer votre entreprise?",
+      "description": "Contactez-nous aujourd'hui pour découvrir comment nous pouvons vous aider à atteindre l'excellence numérique.",
+      "button": "Nous contacter"
+    }
+  },
+  "about": {
+    "title": "À propos de nous",
+    "company": {
+      "title": "Profil de l'entreprise",
+      "description": "Découvrez notre entreprise, notre mission et nos valeurs"
+    },
+    "history": {
+      "title": "Notre histoire",
+      "description": "Explorez notre parcours et nos jalons"
+    },
+    "culture": {
+      "title": "Culture d'entreprise",
+      "description": "Découvrez nos valeurs et notre environnement de travail"
+    },
+    "team": {
+      "title": "Notre équipe",
+      "description": "Rencontrez les personnes derrière notre succès"
+    },
+    "certifications": {
+      "title": "Certifications et récompenses",
+      "description": "Nos réalisations et reconnaissances"
+    }
+  },
+  "services": {
+    "title": "Nos Services",
+    "description": "Solutions numériques complètes adaptées à l'industrie de l'énergie",
+    "categories": "Catégories de services",
+    "viewDetails": "Voir les détails"
+  },
+  "products": {
+    "title": "Produits",
+    "description": "Solutions logicielles et technologiques innovantes",
+    "categories": "Catégories de produits",
+    "viewDetails": "Voir les détails",
+    "features": "Caractéristiques principales",
+    "specifications": "Spécifications"
+  },
+  "projects": {
+    "title": "Projets",
+    "description": "Implémentations réussies et études de cas",
+    "client": "Client",
+    "location": "Lieu",
+    "year": "Année",
+    "challenge": "Défi",
+    "solution": "Solution",
+    "results": "Résultats"
+  },
+  "news": {
+    "title": "Actualités",
+    "description": "Dernières nouvelles et annonces",
+    "categories": "Catégories",
+    "all": "Toutes les actualités",
+    "published": "Publié le",
+    "readTime": "min de lecture",
+    "share": "Partager",
+    "relatedNews": "Actualités connexes"
+  },
+  "contact": {
+    "title": "Contactez-nous",
+    "description": "Prenez contact avec notre équipe",
+    "form": {
+      "name": "Votre nom",
+      "email": "Adresse e-mail",
+      "phone": "Numéro de téléphone",
+      "company": "Nom de l'entreprise",
+      "subject": "Sujet",
+      "message": "Votre message",
+      "submit": "Envoyer le message",
+      "success": "Merci! Votre message a été envoyé avec succès.",
+      "error": "Désolé, une erreur s'est produite lors de l'envoi de votre message. Veuillez réessayer."
+    },
+    "info": {
+      "title": "Informations de contact",
+      "address": "Adresse",
+      "phone": "Téléphone",
+      "email": "E-mail",
+      "hours": "Heures d'ouverture"
+    },
+    "map": {
+      "title": "Notre emplacement"
+    }
+  },
+  "footer": {
+    "description": "Kunlun Digital Technology Algérie - Votre partenaire de confiance pour la transformation numérique dans le secteur de l'énergie.",
+    "quickLinks": "Liens rapides",
+    "services": "Services",
+    "contact": "Contact",
+    "followUs": "Suivez-nous",
+    "copyright": "© {year} KLD Algérie. Tous droits réservés.",
+    "privacy": "Politique de confidentialité",
+    "terms": "Conditions d'utilisation"
+  },
+  "admin": {
+    "dashboard": "Tableau de bord",
+    "content": "Gestion du contenu",
+    "news": "Gestion des actualités",
+    "products": "Produits et services",
+    "projects": "Cas de projets",
+    "homepage": "Page d'accueil",
+    "company": "Infos entreprise",
+    "messages": "Messages",
+    "media": "Médiathèque",
+    "settings": "Paramètres",
+    "users": "Gestion des utilisateurs",
+    "logout": "Déconnexion",
+    "welcome": "Bienvenue",
+    "stats": {
+      "totalNews": "Total actualités",
+      "totalProducts": "Total produits",
+      "totalProjects": "Total projets",
+      "unreadMessages": "Messages non lus"
+    }
+  },
+  "auth": {
+    "login": "Connexion",
+    "logout": "Déconnexion",
+    "email": "E-mail",
+    "password": "Mot de passe",
+    "rememberMe": "Se souvenir de moi",
+    "forgotPassword": "Mot de passe oublié?",
+    "loginError": "E-mail ou mot de passe invalide",
+    "loginSuccess": "Connexion réussie"
+  }
+}

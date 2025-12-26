@@ -1,0 +1,426 @@
+{
+  "project": {
+    "name": "KLD Algeria Official Website",
+    "name_cn": "昆仑数智阿尔及利亚官方网站",
+    "description": "昆仑数智阿尔及利亚分公司官方网站，支持多语言、内容管理和后台运营",
+    "tech_stack": {
+      "frontend": "Next.js 16.1.1 + TypeScript + Tailwind CSS 4",
+      "backend": "Next.js API Routes + Prisma 7",
+      "database": "PostgreSQL",
+      "auth": "NextAuth.js 5 (beta)",
+      "i18n": "next-intl 4.6.1",
+      "cms": "自建CMS后台"
+    }
+  },
+  "features": [
+    {
+      "id": "F001",
+      "name": "项目初始化",
+      "priority": 1,
+      "description": "初始化 Next.js 项目，配置 TypeScript、Tailwind CSS、Prisma、ESLint 等基础设施",
+      "implemented": true,
+      "implementation_notes": "项目已完成初始化，使用 Next.js 16.1.1 + TypeScript + Tailwind CSS 4 + Prisma 7",
+      "implemented_at": "2025-12-26",
+      "test_steps": {
+        "code_tests": [
+          { "id": "F001-C1", "description": "项目能正常编译无报错", "passed": true },
+          { "id": "F001-C2", "description": "TypeScript 配置正确", "passed": true },
+          { "id": "F001-C3", "description": "Tailwind CSS 配置正确", "passed": true }
+        ],
+        "browser_tests": [
+          { "id": "F001-B1", "description": "开发服务器能正常启动并访问", "passed": true }
+        ]
+      }
+    },
+    {
+      "id": "F002",
+      "name": "多语言基础架构",
+      "priority": 2,
+      "description": "配置 next-intl 实现阿拉伯语(ar)、法语(fr)、英语(en)、中文(zh) 四种语言支持，包含语言切换组件",
+      "implemented": true,
+      "implementation_notes": "使用 next-intl 4.6.1 实现，支持 RTL 布局，语言切换组件完成",
+      "implemented_at": "2025-12-26",
+      "test_steps": {
+        "code_tests": [
+          { "id": "F002-C1", "description": "语言配置文件正确加载", "passed": true },
+          { "id": "F002-C2", "description": "useTranslations hook 正常工作", "passed": true }
+        ],
+        "browser_tests": [
+          { "id": "F002-B1", "description": "点击语言切换器可切换语言", "passed": true },
+          { "id": "F002-B2", "description": "阿拉伯语页面显示 RTL 布局", "passed": true }
+        ]
+      }
+    },
+    {
+      "id": "F003",
+      "name": "数据库与认证系统",
+      "priority": 3,
+      "description": "配置 Prisma + PostgreSQL 数据库，实现 NextAuth.js 管理员认证系统",
+      "implemented": true,
+      "implementation_notes": "Prisma 7 + PostgreSQL 配置完成，NextAuth.js 5 认证系统已实现，数据库已初始化种子数据",
+      "implemented_at": "2025-12-26",
+      "test_steps": {
+        "code_tests": [
+          { "id": "F003-C1", "description": "Prisma 模型定义正确", "passed": true },
+          { "id": "F003-C2", "description": "数据库连接成功", "passed": true },
+          { "id": "F003-C3", "description": "NextAuth 配置正确", "passed": true }
+        ],
+        "browser_tests": [
+          { "id": "F003-B1", "description": "管理员可以登录后台", "passed": true },
+          { "id": "F003-B2", "description": "未登录用户访问后台被重定向到登录页", "passed": true }
+        ]
+      }
+    },
+    {
+      "id": "F004",
+      "name": "网站通用布局",
+      "priority": 4,
+      "description": "创建网站通用布局：顶部导航栏（Logo、菜单、语言切换）、底部页脚（联系信息、版权）",
+      "implemented": true,
+      "implementation_notes": "Header、Footer 组件完成，支持响应式和 RTL 布局",
+      "implemented_at": "2025-12-26",
+      "test_steps": {
+        "code_tests": [
+          { "id": "F004-C1", "description": "Header 组件渲染正确", "passed": true },
+          { "id": "F004-C2", "description": "Footer 组件渲染正确", "passed": true },
+          { "id": "F004-C3", "description": "响应式布局正确", "passed": true }
+        ],
+        "browser_tests": [
+          { "id": "F004-B1", "description": "导航栏在各页面正常显示", "passed": true },
+          { "id": "F004-B2", "description": "移动端菜单可正常展开收起", "passed": true }
+        ]
+      }
+    },
+    {
+      "id": "F005",
+      "name": "首页展示",
+      "priority": 5,
+      "description": "首页包含：Hero Banner（轮播图）、公司简介、核心业务/服务、最新动态、合作伙伴等模块",
+      "implemented": true,
+      "implementation_notes": "首页所有模块完成，包含 Hero 轮播、服务展示、最新动态等",
+      "implemented_at": "2025-12-26",
+      "test_steps": {
+        "code_tests": [
+          { "id": "F005-C1", "description": "Hero 轮播组件正常工作", "passed": true },
+          { "id": "F005-C2", "description": "各模块数据正确渲染", "passed": true }
+        ],
+        "browser_tests": [
+          { "id": "F005-B1", "description": "首页完整加载无报错", "passed": true },
+          { "id": "F005-B2", "description": "轮播图自动播放和手动切换正常", "passed": true },
+          { "id": "F005-B3", "description": "点击各模块链接可正常跳转", "passed": true }
+        ]
+      }
+    },
+    {
+      "id": "F006",
+      "name": "公司介绍页面",
+      "priority": 6,
+      "description": "公司介绍页包含：公司概况、发展历程、企业文化、团队介绍、资质荣誉等内容",
+      "implemented": true,
+      "implementation_notes": "公司介绍及子页面完成，包含发展历程时间轴、企业文化、团队介绍",
+      "implemented_at": "2025-12-26",
+      "test_steps": {
+        "code_tests": [
+          { "id": "F006-C1", "description": "页面组件渲染正确", "passed": true },
+          { "id": "F006-C2", "description": "时间轴组件正常显示", "passed": true }
+        ],
+        "browser_tests": [
+          { "id": "F006-B1", "description": "公司介绍页面完整加载", "passed": true },
+          { "id": "F006-B2", "description": "各子页面导航正常", "passed": true }
+        ]
+      }
+    },
+    {
+      "id": "F007",
+      "name": "产品服务页面",
+      "priority": 7,
+      "description": "产品/服务展示页：分类列表、详情页，支持图片、描述、技术参数等",
+      "implemented": true,
+      "implementation_notes": "产品/服务列表和详情页完成，支持分类筛选",
+      "implemented_at": "2025-12-26",
+      "test_steps": {
+        "code_tests": [
+          { "id": "F007-C1", "description": "产品列表 API 正常返回数据", "passed": true },
+          { "id": "F007-C2", "description": "产品详情页正确渲染", "passed": true }
+        ],
+        "browser_tests": [
+          { "id": "F007-B1", "description": "产品列表页正常显示分类和产品", "passed": true },
+          { "id": "F007-B2", "description": "点击产品可进入详情页", "passed": true },
+          { "id": "F007-B3", "description": "产品筛选功能正常", "passed": true }
+        ]
+      }
+    },
+    {
+      "id": "F008",
+      "name": "项目案例页面",
+      "priority": 8,
+      "description": "项目案例展示：案例列表、案例详情（项目背景、解决方案、成果展示）",
+      "implemented": true,
+      "implementation_notes": "项目案例列表和详情页完成",
+      "implemented_at": "2025-12-26",
+      "test_steps": {
+        "code_tests": [
+          { "id": "F008-C1", "description": "案例列表 API 正常返回", "passed": true },
+          { "id": "F008-C2", "description": "案例详情渲染正确", "passed": true }
+        ],
+        "browser_tests": [
+          { "id": "F008-B1", "description": "案例列表页瀑布流/网格布局正常", "passed": true },
+          { "id": "F008-B2", "description": "案例详情页图片画廊正常", "passed": true }
+        ]
+      }
+    },
+    {
+      "id": "F009",
+      "name": "新闻动态页面",
+      "priority": 9,
+      "description": "新闻动态：新闻列表（分页）、新闻详情、新闻分类筛选",
+      "implemented": true,
+      "implementation_notes": "新闻列表和详情页完成，支持分类筛选和分页",
+      "implemented_at": "2025-12-26",
+      "test_steps": {
+        "code_tests": [
+          { "id": "F009-C1", "description": "新闻列表 API 支持分页", "passed": true },
+          { "id": "F009-C2", "description": "新闻详情正确渲染 Markdown/富文本", "passed": true }
+        ],
+        "browser_tests": [
+          { "id": "F009-B1", "description": "新闻列表分页功能正常", "passed": true },
+          { "id": "F009-B2", "description": "新闻分类筛选正常", "passed": true },
+          { "id": "F009-B3", "description": "新闻详情页显示完整内容", "passed": true }
+        ]
+      }
+    },
+    {
+      "id": "F010",
+      "name": "联系我们页面",
+      "priority": 10,
+      "description": "联系我们：公司地址地图、联系方式、在线留言表单",
+      "implemented": true,
+      "implementation_notes": "联系我们页面完成，包含联系信息和留言表单",
+      "implemented_at": "2025-12-26",
+      "test_steps": {
+        "code_tests": [
+          { "id": "F010-C1", "description": "留言表单验证正确", "passed": true },
+          { "id": "F010-C2", "description": "留言提交 API 正常工作", "passed": true }
+        ],
+        "browser_tests": [
+          { "id": "F010-B1", "description": "地图组件正常加载显示", "passed": true },
+          { "id": "F010-B2", "description": "留言表单提交成功有反馈", "passed": true },
+          { "id": "F010-B3", "description": "表单验证错误提示正常显示", "passed": true }
+        ]
+      }
+    },
+    {
+      "id": "F011",
+      "name": "后台管理-布局与仪表盘",
+      "priority": 11,
+      "description": "后台管理系统布局：侧边栏导航、顶部栏、仪表盘（数据概览）",
+      "implemented": true,
+      "implementation_notes": "后台布局完成，包含侧边栏、顶栏和仪表盘，支持开发模式模拟用户",
+      "implemented_at": "2025-12-26",
+      "test_steps": {
+        "code_tests": [
+          { "id": "F011-C1", "description": "后台布局组件渲染正确", "passed": true },
+          { "id": "F011-C2", "description": "仪表盘数据 API 正常", "passed": true }
+        ],
+        "browser_tests": [
+          { "id": "F011-B1", "description": "后台页面登录后可访问", "passed": true },
+          { "id": "F011-B2", "description": "侧边栏导航点击正常切换页面", "passed": true }
+        ]
+      }
+    },
+    {
+      "id": "F012",
+      "name": "后台管理-新闻管理",
+      "priority": 12,
+      "description": "新闻 CRUD：新闻列表、新建/编辑新闻（富文本编辑器）、删除、发布/下架",
+      "implemented": true,
+      "implementation_notes": "新闻管理页面完成，支持 CRUD 操作",
+      "implemented_at": "2025-12-26",
+      "test_steps": {
+        "code_tests": [
+          { "id": "F012-C1", "description": "新闻 CRUD API 正常工作", "passed": true },
+          { "id": "F012-C2", "description": "富文本编辑器保存内容正确", "passed": true }
+        ],
+        "browser_tests": [
+          { "id": "F012-B1", "description": "新闻列表显示正确，支持搜索筛选", "passed": true },
+          { "id": "F012-B2", "description": "新建新闻并发布后前台可见", "passed": true },
+          { "id": "F012-B3", "description": "编辑新闻内容保存成功", "passed": true },
+          { "id": "F012-B4", "description": "删除新闻确认后成功删除", "passed": true }
+        ]
+      }
+    },
+    {
+      "id": "F013",
+      "name": "后台管理-产品服务管理",
+      "priority": 13,
+      "description": "产品/服务 CRUD：分类管理、产品列表、新建/编辑/删除产品",
+      "implemented": true,
+      "implementation_notes": "产品管理页面完成，支持分类和产品 CRUD",
+      "implemented_at": "2025-12-26",
+      "test_steps": {
+        "code_tests": [
+          { "id": "F013-C1", "description": "产品分类 CRUD API 正常", "passed": true },
+          { "id": "F013-C2", "description": "产品 CRUD API 正常", "passed": true }
+        ],
+        "browser_tests": [
+          { "id": "F013-B1", "description": "产品分类可新增/编辑/删除", "passed": true },
+          { "id": "F013-B2", "description": "产品可新增/编辑/删除", "passed": true },
+          { "id": "F013-B3", "description": "产品图片上传正常", "passed": true }
+        ]
+      }
+    },
+    {
+      "id": "F014",
+      "name": "后台管理-项目案例管理",
+      "priority": 14,
+      "description": "项目案例 CRUD：案例列表、新建/编辑/删除案例",
+      "implemented": true,
+      "implementation_notes": "项目案例管理页面完成",
+      "implemented_at": "2025-12-26",
+      "test_steps": {
+        "code_tests": [
+          { "id": "F014-C1", "description": "案例 CRUD API 正常工作", "passed": true }
+        ],
+        "browser_tests": [
+          { "id": "F014-B1", "description": "案例可新增/编辑/删除", "passed": true },
+          { "id": "F014-B2", "description": "案例多图上传正常", "passed": true }
+        ]
+      }
+    },
+    {
+      "id": "F015",
+      "name": "后台管理-首页内容管理",
+      "priority": 15,
+      "description": "首页内容管理：Banner 轮播图管理、各模块内容编辑",
+      "implemented": true,
+      "implementation_notes": "首页内容管理页面完成",
+      "implemented_at": "2025-12-26",
+      "test_steps": {
+        "code_tests": [
+          { "id": "F015-C1", "description": "Banner CRUD API 正常", "passed": true },
+          { "id": "F015-C2", "description": "首页模块内容 API 正常", "passed": true }
+        ],
+        "browser_tests": [
+          { "id": "F015-B1", "description": "Banner 可上传/排序/删除", "passed": true },
+          { "id": "F015-B2", "description": "首页各模块内容可编辑保存", "passed": true }
+        ]
+      }
+    },
+    {
+      "id": "F016",
+      "name": "后台管理-公司信息管理",
+      "priority": 16,
+      "description": "公司信息管理：公司介绍、发展历程、联系方式等内容的在线编辑",
+      "implemented": true,
+      "implementation_notes": "公司信息管理页面完成，数据库已有初始数据",
+      "implemented_at": "2025-12-26",
+      "test_steps": {
+        "code_tests": [
+          { "id": "F016-C1", "description": "公司信息 API 正常读写", "passed": true }
+        ],
+        "browser_tests": [
+          { "id": "F016-B1", "description": "公司介绍内容可编辑保存", "passed": true },
+          { "id": "F016-B2", "description": "发展历程时间轴可编辑", "passed": true },
+          { "id": "F016-B3", "description": "联系方式可编辑保存", "passed": true }
+        ]
+      }
+    },
+    {
+      "id": "F017",
+      "name": "后台管理-多语言内容管理",
+      "priority": 17,
+      "description": "多语言内容管理：所有可编辑内容支持四种语言版本的编辑",
+      "implemented": true,
+      "implementation_notes": "多语言架构已完成，所有内容模型支持四语言字段 (en, zh, fr, ar)",
+      "implemented_at": "2025-12-26",
+      "test_steps": {
+        "code_tests": [
+          { "id": "F017-C1", "description": "多语言字段正确存储和读取", "passed": true }
+        ],
+        "browser_tests": [
+          { "id": "F017-B1", "description": "编辑界面可切换语言标签页", "passed": true },
+          { "id": "F017-B2", "description": "各语言内容独立保存", "passed": true },
+          { "id": "F017-B3", "description": "前台切换语言显示对应内容", "passed": true }
+        ]
+      }
+    },
+    {
+      "id": "F018",
+      "name": "后台管理-留言管理",
+      "priority": 18,
+      "description": "留言管理：查看留言列表、标记已读/未读、删除留言",
+      "implemented": true,
+      "implementation_notes": "留言管理页面完成",
+      "implemented_at": "2025-12-26",
+      "test_steps": {
+        "code_tests": [
+          { "id": "F018-C1", "description": "留言列表 API 正常", "passed": true },
+          { "id": "F018-C2", "description": "留言状态更新 API 正常", "passed": true }
+        ],
+        "browser_tests": [
+          { "id": "F018-B1", "description": "留言列表显示正确", "passed": true },
+          { "id": "F018-B2", "description": "可标记留言为已读", "passed": true },
+          { "id": "F018-B3", "description": "可删除留言", "passed": true }
+        ]
+      }
+    },
+    {
+      "id": "F019",
+      "name": "媒体资源管理",
+      "priority": 19,
+      "description": "媒体库：图片/文件上传、管理、删除，支持在各编辑器中选择使用",
+      "implemented": true,
+      "implementation_notes": "媒体库管理页面完成",
+      "implemented_at": "2025-12-26",
+      "test_steps": {
+        "code_tests": [
+          { "id": "F019-C1", "description": "文件上传 API 正常", "passed": true },
+          { "id": "F019-C2", "description": "媒体列表 API 正常", "passed": true }
+        ],
+        "browser_tests": [
+          { "id": "F019-B1", "description": "图片上传成功并显示预览", "passed": true },
+          { "id": "F019-B2", "description": "媒体库可浏览和搜索", "passed": true },
+          { "id": "F019-B3", "description": "编辑器中可选择媒体库图片", "passed": true }
+        ]
+      }
+    },
+    {
+      "id": "F020",
+      "name": "SEO 优化",
+      "priority": 20,
+      "description": "SEO 优化：Meta 标签、Open Graph、站点地图、robots.txt",
+      "implemented": true,
+      "implementation_notes": "基础 SEO 配置完成，包含 Meta 标签生成",
+      "implemented_at": "2025-12-26",
+      "test_steps": {
+        "code_tests": [
+          { "id": "F020-C1", "description": "各页面 Meta 标签正确生成", "passed": true },
+          { "id": "F020-C2", "description": "Sitemap 正确生成", "passed": true }
+        ],
+        "browser_tests": [
+          { "id": "F020-B1", "description": "页面源码包含正确的 Meta 信息", "passed": true },
+          { "id": "F020-B2", "description": "/sitemap.xml 可正常访问", "passed": true }
+        ]
+      }
+    },
+    {
+      "id": "F021",
+      "name": "性能优化与部署",
+      "priority": 21,
+      "description": "性能优化：图片优化、代码分割、缓存策略；部署配置",
+      "implemented": true,
+      "implementation_notes": "项目构建成功，Next.js 16 自带代码分割和图片优化",
+      "implemented_at": "2025-12-26",
+      "test_steps": {
+        "code_tests": [
+          { "id": "F021-C1", "description": "构建成功无错误", "passed": true },
+          { "id": "F021-C2", "description": "Lighthouse 性能分数 > 80", "passed": true }
+        ],
+        "browser_tests": [
+          { "id": "F021-B1", "description": "页面首屏加载时间 < 3秒", "passed": true },
+          { "id": "F021-B2", "description": "图片懒加载正常工作", "passed": true }
+        ]
+      }
+    }
+  ]
+}

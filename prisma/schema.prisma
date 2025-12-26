@@ -1,0 +1,204 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// 管理员用户
+model User {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  password      String
+  name          String?
+  role          String    @default("admin")
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+}
+
+// 多语言内容模型
+model Translation {
+  id        String   @id @default(cuid())
+  key       String
+  locale    String   // ar, fr, en, zh
+  value     String   @db.Text
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([key, locale])
+  @@index([key])
+}
+
+// Banner 轮播图
+model Banner {
+  id          String   @id @default(cuid())
+  title       Json     // { ar, fr, en, zh }
+  subtitle    Json?    // { ar, fr, en, zh }
+  image       String
+  link        String?
+  order       Int      @default(0)
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+// 新闻分类
+model NewsCategory {
+  id        String   @id @default(cuid())
+  name      Json     // { ar, fr, en, zh }
+  slug      String   @unique
+  order     Int      @default(0)
+  news      News[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// 新闻文章
+model News {
+  id          String        @id @default(cuid())
+  title       Json          // { ar, fr, en, zh }
+  slug        String        @unique
+  excerpt     Json?         // { ar, fr, en, zh }
+  content     Json          // { ar, fr, en, zh }
+  image       String?
+  categoryId  String?
+  category    NewsCategory? @relation(fields: [categoryId], references: [id])
+  isPublished Boolean       @default(false)
+  publishedAt DateTime?
+  viewCount   Int           @default(0)
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+
+  @@index([categoryId])
+  @@index([isPublished])
+}
+
+// 产品分类
+model ProductCategory {
+  id        String    @id @default(cuid())
+  name      Json      // { ar, fr, en, zh }
+  slug      String    @unique
+  image     String?
+  order     Int       @default(0)
+  products  Product[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+// 产品/服务
+model Product {
+  id          String           @id @default(cuid())
+  name        Json             // { ar, fr, en, zh }
+  slug        String           @unique
+  description Json?            // { ar, fr, en, zh }
+  content     Json?            // { ar, fr, en, zh }
+  image       String?
+  images      String[]         // 多图
+  categoryId  String?
+  category    ProductCategory? @relation(fields: [categoryId], references: [id])
+  isActive    Boolean          @default(true)
+  order       Int              @default(0)
+  createdAt   DateTime         @default(now())
+  updatedAt   DateTime         @updatedAt
+
+  @@index([categoryId])
+}
+
+// 项目案例
+model Project {
+  id          String   @id @default(cuid())
+  title       Json     // { ar, fr, en, zh }
+  slug        String   @unique
+  description Json?    // { ar, fr, en, zh }
+  content     Json?    // { ar, fr, en, zh }
+  client      Json?    // { ar, fr, en, zh }
+  location    Json?    // { ar, fr, en, zh }
+  year        String?
+  image       String?
+  images      String[] // 多图
+  isActive    Boolean  @default(true)
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+// 公司信息
+model CompanyInfo {
+  id        String   @id @default(cuid())
+  key       String   @unique // about, history, culture, contact, etc.
+  value     Json     // { ar, fr, en, zh }
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// 发展历程
+model Timeline {
+  id          String   @id @default(cuid())
+  year        String
+  title       Json     // { ar, fr, en, zh }
+  description Json?    // { ar, fr, en, zh }
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+// 团队成员
+model TeamMember {
+  id        String   @id @default(cuid())
+  name      Json     // { ar, fr, en, zh }
+  position  Json     // { ar, fr, en, zh }
+  bio       Json?    // { ar, fr, en, zh }
+  image     String?
+  order     Int      @default(0)
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// 合作伙伴
+model Partner {
+  id        String   @id @default(cuid())
+  name      String
+  logo      String
+  website   String?
+  order     Int      @default(0)
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// 留言
+model Message {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  phone     String?
+  company   String?
+  subject   String?
+  content   String   @db.Text
+  isRead    Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// 媒体文件
+model Media {
+  id        String   @id @default(cuid())
+  name      String
+  url       String
+  type      String   // image, video, document
+  size      Int
+  mimeType  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// 网站设置
+model Setting {
+  id        String   @id @default(cuid())
+  key       String   @unique
+  value     Json
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

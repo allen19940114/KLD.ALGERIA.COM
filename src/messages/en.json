@@ -1,0 +1,189 @@
+{
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "add": "Add",
+    "search": "Search",
+    "submit": "Submit",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "readMore": "Read More",
+    "viewAll": "View All",
+    "learnMore": "Learn More",
+    "getStarted": "Get Started",
+    "contactUs": "Contact Us"
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About Us",
+    "aboutCompany": "Company Profile",
+    "aboutHistory": "Our History",
+    "aboutCulture": "Corporate Culture",
+    "aboutTeam": "Our Team",
+    "services": "Services",
+    "products": "Products",
+    "projects": "Projects",
+    "news": "News",
+    "contact": "Contact"
+  },
+  "home": {
+    "hero": {
+      "title": "KLD Algeria",
+      "subtitle": "Digital Intelligence Solutions",
+      "description": "Leading provider of digital technology solutions in Algeria, empowering enterprises with innovative oil & gas industry solutions."
+    },
+    "about": {
+      "title": "About KLD Algeria",
+      "description": "Kunlun Digital Technology (KLD) Algeria is a subsidiary of China National Petroleum Corporation, dedicated to providing world-class digital solutions for the energy sector."
+    },
+    "services": {
+      "title": "Our Services",
+      "description": "Comprehensive digital solutions for the oil and gas industry"
+    },
+    "projects": {
+      "title": "Featured Projects",
+      "description": "Explore our successful project implementations"
+    },
+    "news": {
+      "title": "Latest News",
+      "description": "Stay updated with our latest developments"
+    },
+    "partners": {
+      "title": "Our Partners",
+      "description": "Trusted by industry leaders"
+    },
+    "cta": {
+      "title": "Ready to Transform Your Business?",
+      "description": "Contact us today to learn how we can help you achieve digital excellence.",
+      "button": "Get in Touch"
+    }
+  },
+  "about": {
+    "title": "About Us",
+    "company": {
+      "title": "Company Profile",
+      "description": "Learn about our company, mission, and values"
+    },
+    "history": {
+      "title": "Our History",
+      "description": "Explore our journey and milestones"
+    },
+    "culture": {
+      "title": "Corporate Culture",
+      "description": "Discover our values and work environment"
+    },
+    "team": {
+      "title": "Our Team",
+      "description": "Meet the people behind our success"
+    },
+    "certifications": {
+      "title": "Certifications & Awards",
+      "description": "Our achievements and recognitions"
+    }
+  },
+  "services": {
+    "title": "Our Services",
+    "description": "Comprehensive digital solutions tailored for the energy industry",
+    "categories": "Service Categories",
+    "viewDetails": "View Details"
+  },
+  "products": {
+    "title": "Products",
+    "description": "Innovative software and technology solutions",
+    "categories": "Product Categories",
+    "viewDetails": "View Details",
+    "features": "Key Features",
+    "specifications": "Specifications"
+  },
+  "projects": {
+    "title": "Projects",
+    "description": "Successful implementations and case studies",
+    "client": "Client",
+    "location": "Location",
+    "year": "Year",
+    "challenge": "Challenge",
+    "solution": "Solution",
+    "results": "Results"
+  },
+  "news": {
+    "title": "News & Updates",
+    "description": "Latest news and announcements",
+    "categories": "Categories",
+    "all": "All News",
+    "published": "Published",
+    "readTime": "min read",
+    "share": "Share",
+    "relatedNews": "Related News"
+  },
+  "contact": {
+    "title": "Contact Us",
+    "description": "Get in touch with our team",
+    "form": {
+      "name": "Your Name",
+      "email": "Email Address",
+      "phone": "Phone Number",
+      "company": "Company Name",
+      "subject": "Subject",
+      "message": "Your Message",
+      "submit": "Send Message",
+      "success": "Thank you! Your message has been sent successfully.",
+      "error": "Sorry, there was an error sending your message. Please try again."
+    },
+    "info": {
+      "title": "Contact Information",
+      "address": "Address",
+      "phone": "Phone",
+      "email": "Email",
+      "hours": "Working Hours"
+    },
+    "map": {
+      "title": "Our Location"
+    }
+  },
+  "footer": {
+    "description": "Kunlun Digital Technology Algeria - Your trusted partner for digital transformation in the energy sector.",
+    "quickLinks": "Quick Links",
+    "services": "Services",
+    "contact": "Contact Info",
+    "followUs": "Follow Us",
+    "copyright": "© {year} KLD Algeria. All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service"
+  },
+  "admin": {
+    "dashboard": "Dashboard",
+    "content": "Content Management",
+    "news": "News Management",
+    "products": "Products & Services",
+    "projects": "Project Cases",
+    "homepage": "Homepage",
+    "company": "Company Info",
+    "messages": "Messages",
+    "media": "Media Library",
+    "settings": "Settings",
+    "users": "User Management",
+    "logout": "Logout",
+    "welcome": "Welcome back",
+    "stats": {
+      "totalNews": "Total News",
+      "totalProducts": "Total Products",
+      "totalProjects": "Total Projects",
+      "unreadMessages": "Unread Messages"
+    }
+  },
+  "auth": {
+    "login": "Login",
+    "logout": "Logout",
+    "email": "Email",
+    "password": "Password",
+    "rememberMe": "Remember me",
+    "forgotPassword": "Forgot password?",
+    "loginError": "Invalid email or password",
+    "loginSuccess": "Login successful"
+  }
+}
