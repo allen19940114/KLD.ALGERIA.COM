@@ -234,6 +234,44 @@ function PageContent({ locale }: { locale: string }) {
 
 ---
 
+### [2025-12-26 05:00] - Session 6
+
+**修复内容**: Intl.DateTimeFormat locale 格式错误
+
+**问题描述**:
+访问中文页面（如 /zh/admin/media）时，控制台报错 `RangeError: Incorrect locale information provided`。
+
+**问题分析**:
+`Intl.DateTimeFormat` 需要标准的 BCP 47 语言标签（如 "zh-CN"），但代码传递的是简短的 locale 代码（如 "zh"）。
+
+**修改的文件**:
+- `src/app/[locale]/(main)/page.tsx` - 首页 NewsSection 日期格式化
+- `src/app/[locale]/admin/news/page.tsx` - 新闻管理列表日期格式化
+
+**修复方案**:
+添加 locale 映射函数，将短代码转换为标准的 BCP 47 格式：
+
+```typescript
+const getIntlLocale = (loc: string) => {
+  const localeMap: Record<string, string> = {
+    zh: "zh-CN",
+    en: "en-US",
+    fr: "fr-FR",
+    ar: "ar-SA",
+  };
+  return localeMap[loc] || loc;
+};
+```
+
+并添加 try-catch 错误处理作为降级方案。
+
+**构建结果**:
+- ✅ 编译成功
+- ✅ TypeScript 类型检查通过
+- ✅ 108 个页面路由正常
+
+---
+
 ### [2025-12-26 04:00] - Session 5
 
 **修复内容**: 后台管理页面 404 错误 - 缺失的新增/编辑表单页面

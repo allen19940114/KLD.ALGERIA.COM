@@ -128,13 +128,27 @@ export default function AdminNewsPage() {
     return content[locale] || content.en || "";
   };
 
+  const getIntlLocale = (loc: string) => {
+    const localeMap: Record<string, string> = {
+      zh: "zh-CN",
+      en: "en-US",
+      fr: "fr-FR",
+      ar: "ar-SA",
+    };
+    return localeMap[loc] || loc;
+  };
+
   const formatDate = (date: string | null) => {
     if (!date) return "-";
-    return new Intl.DateTimeFormat(locale, {
-      year: "numeric",
-      month: "short",
-      day: "numeric",
-    }).format(new Date(date));
+    try {
+      return new Intl.DateTimeFormat(getIntlLocale(locale), {
+        year: "numeric",
+        month: "short",
+        day: "numeric",
+      }).format(new Date(date));
+    } catch {
+      return new Date(date).toLocaleDateString();
+    }
   };
 
   const filteredNews = news.filter(item =>

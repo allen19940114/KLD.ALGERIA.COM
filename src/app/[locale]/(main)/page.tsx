@@ -290,13 +290,27 @@ function NewsSection({ locale, news }: { locale: string; news: NewsItem[] }) {
   const t = useTranslations("home.news");
   const tCommon = useTranslations("common");
 
+  const getIntlLocale = (loc: string) => {
+    const localeMap: Record<string, string> = {
+      zh: "zh-CN",
+      en: "en-US",
+      fr: "fr-FR",
+      ar: "ar-SA",
+    };
+    return localeMap[loc] || loc;
+  };
+
   const formatDate = (date: Date | null) => {
     if (!date) return "";
-    return new Intl.DateTimeFormat(locale, {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    }).format(new Date(date));
+    try {
+      return new Intl.DateTimeFormat(getIntlLocale(locale), {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      }).format(new Date(date));
+    } catch {
+      return new Date(date).toLocaleDateString();
+    }
   };
 
   return (
