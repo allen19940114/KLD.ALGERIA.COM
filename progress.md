@@ -234,6 +234,62 @@ function PageContent({ locale }: { locale: string }) {
 
 ---
 
+### [2025-12-26 04:00] - Session 5
+
+**修复内容**: 后台管理页面 404 错误 - 缺失的新增/编辑表单页面
+
+**问题描述**:
+后台管理界面的"添加"和"编辑"按钮点击后显示 404 错误，因为对应的页面文件不存在。
+
+**问题分析**:
+后台列表页面（如 `news/page.tsx`）包含链接指向 `/admin/news/new` 和 `/admin/news/[id]/edit`，但这些路由页面文件未创建。
+
+**新增的文件**:
+
+#### 新闻管理表单
+- `src/app/[locale]/admin/news/new/page.tsx` - 新闻新增页面
+- `src/app/[locale]/admin/news/[id]/edit/page.tsx` - 新闻编辑页面
+
+#### 产品管理表单
+- `src/app/[locale]/admin/products/new/page.tsx` - 产品新增页面
+- `src/app/[locale]/admin/products/[id]/edit/page.tsx` - 产品编辑页面
+
+#### 项目管理表单
+- `src/app/[locale]/admin/projects/new/page.tsx` - 项目新增页面
+- `src/app/[locale]/admin/projects/[id]/edit/page.tsx` - 项目编辑页面
+
+**表单功能特性**:
+- ✅ 多语言内容编辑 (en, zh, fr, ar 四个语言标签页)
+- ✅ 实时表单验证
+- ✅ Slug 自动生成功能
+- ✅ 分类选择器（从 API 动态获取）
+- ✅ 图片 URL 输入
+- ✅ 图片库管理（项目支持多图）
+- ✅ 发布状态切换
+- ✅ 保存/取消/删除操作
+- ✅ 加载状态指示器
+- ✅ 错误处理与提示
+
+**构建结果**:
+- ✅ 编译成功
+- ✅ TypeScript 类型检查通过
+- ✅ 108 个页面路由正常生成（增加 12 个新页面）
+
+**路由结构**:
+```
+/[locale]/admin/news/           - 新闻列表
+/[locale]/admin/news/new        - 新闻新增 (新增)
+/[locale]/admin/news/[id]/edit  - 新闻编辑 (新增)
+/[locale]/admin/products/       - 产品列表
+/[locale]/admin/products/new    - 产品新增 (新增)
+/[locale]/admin/products/[id]/edit - 产品编辑 (新增)
+/[locale]/admin/projects/       - 项目列表
+/[locale]/admin/projects/new    - 项目新增 (新增)
+/[locale]/admin/projects/[id]/edit - 项目编辑 (新增)
+```
+
+---
+
 ### [2025-12-26 02:00] - Session 3
 
 **完成内容**: 数据库配置与后台认证系统
