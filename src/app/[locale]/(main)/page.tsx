@@ -1,9 +1,9 @@
 import { useTranslations } from "next-intl";
 import { getTranslations } from "next-intl/server";
 import Link from "next/link";
-import Image from "next/image";
 import { ArrowRight, Cpu, Database, Shield, Zap } from "lucide-react";
 import { Button } from "@/components/ui";
+import { getNews, getProjects, getCompanyInfo, getLocalizedText } from "@/lib/data";
 
 export async function generateMetadata({
   params,
@@ -24,13 +24,22 @@ export default async function HomePage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
+
+  // 获取真实数据
+  const [news, projects, companyInfoRaw] = await Promise.all([
+    getNews({ limit: 3 }),
+    getProjects({ limit: 3 }),
+    getCompanyInfo(),
+  ]);
+  const companyInfo = companyInfoRaw as Record<string, unknown> | null;
+
   return (
     <>
       <HeroSection />
       <ServicesSection locale={locale} />
-      <AboutSection locale={locale} />
-      <ProjectsSection locale={locale} />
-      <NewsSection locale={locale} />
+      <AboutSection locale={locale} companyInfo={companyInfo} />
+      <ProjectsSection locale={locale} projects={projects} />
+      <NewsSection locale={locale} news={news} />
       <CTASection locale={locale} />
     </>
   );
@@ -84,27 +93,23 @@ function ServicesSection({ locale }: { locale: string }) {
   const services = [
     {
       icon: Cpu,
-      title: "Digital Solutions",
-      description:
-        "Cutting-edge digital transformation solutions for the energy sector.",
+      titleKey: "digital",
+      descKey: "digitalDesc",
     },
     {
       icon: Database,
-      title: "Data Management",
-      description:
-        "Advanced data analytics and management systems for oil & gas operations.",
+      titleKey: "data",
+      descKey: "dataDesc",
     },
     {
       icon: Shield,
-      title: "Cybersecurity",
-      description:
-        "Comprehensive security solutions to protect critical infrastructure.",
+      titleKey: "security",
+      descKey: "securityDesc",
     },
     {
       icon: Zap,
-      title: "Automation",
-      description:
-        "Industrial automation and control systems for enhanced efficiency.",
+      titleKey: "automation",
+      descKey: "automationDesc",
     },
   ];
 
@@ -130,10 +135,10 @@ function ServicesSection({ locale }: { locale: string }) {
                 <service.icon className="h-6 w-6 text-primary" />
               </div>
               <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-                {service.title}
+                {t(service.titleKey)}
               </h3>
               <p className="text-gray-600 dark:text-gray-400 mb-4">
-                {service.description}
+                {t(service.descKey)}
               </p>
               <Link
                 href={`/${locale}/services`}
@@ -150,9 +155,13 @@ function ServicesSection({ locale }: { locale: string }) {
   );
 }
 
-function AboutSection({ locale }: { locale: string }) {
+function AboutSection({ locale, companyInfo }: { locale: string; companyInfo: Record<string, unknown> | null }) {
   const t = useTranslations("home.about");
   const tCommon = useTranslations("common");
+
+  const aboutText = companyInfo?.about
+    ? getLocalizedText(companyInfo.about, locale)
+    : t("description");
 
   return (
     <section className="py-20">
@@ -163,14 +172,14 @@ function AboutSection({ locale }: { locale: string }) {
               {t("title")}
             </h2>
             <p className="text-lg text-gray-600 dark:text-gray-400 mb-6">
-              {t("description")}
+              {aboutText}
             </p>
             <ul className="space-y-3 mb-8">
               {[
-                "World-class digital technology expertise",
-                "Deep understanding of oil & gas industry",
-                "Proven track record in Algeria",
-                "Commitment to innovation and excellence",
+                t("point1"),
+                t("point2"),
+                t("point3"),
+                t("point4"),
               ].map((item, index) => (
                 <li key={index} className="flex items-center gap-3">
                   <div className="w-2 h-2 bg-primary rounded-full" />
@@ -196,27 +205,17 @@ function AboutSection({ locale }: { locale: string }) {
   );
 }
 
-function ProjectsSection({ locale }: { locale: string }) {
+interface Project {
+  id: string;
+  title: unknown;
+  description: unknown;
+  image: string | null;
+  slug: string;
+}
+
+function ProjectsSection({ locale, projects }: { locale: string; projects: Project[] }) {
   const t = useTranslations("home.projects");
   const tCommon = useTranslations("common");
-
-  const projects = [
-    {
-      title: "Digital Oilfield Implementation",
-      description: "Complete digital transformation for major oil field operations.",
-      image: "/placeholder-project-1.jpg",
-    },
-    {
-      title: "SCADA System Upgrade",
-      description: "Modern SCADA system deployment for pipeline monitoring.",
-      image: "/placeholder-project-2.jpg",
-    },
-    {
-      title: "Data Analytics Platform",
-      description: "Real-time data analytics platform for production optimization.",
-      image: "/placeholder-project-3.jpg",
-    },
-  ];
 
   return (
     <section className="py-20 bg-gray-50 dark:bg-gray-900">
@@ -231,23 +230,31 @@ function ProjectsSection({ locale }: { locale: string }) {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
+          {projects.map((project) => (
             <div
-              key={index}
+              key={project.id}
               className="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow"
             >
               <div className="h-48 bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
-                <span className="text-gray-400">Project Image</span>
+                {project.image ? (
+                  <img
+                    src={project.image}
+                    alt={getLocalizedText(project.title, locale)}
+                    className="w-full h-full object-cover"
+                  />
+                ) : (
+                  <span className="text-gray-400">Project Image</span>
+                )}
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-                  {project.title}
+                  {getLocalizedText(project.title, locale)}
                 </h3>
-                <p className="text-gray-600 dark:text-gray-400 mb-4">
-                  {project.description}
+                <p className="text-gray-600 dark:text-gray-400 mb-4 line-clamp-2">
+                  {getLocalizedText(project.description, locale)}
                 </p>
                 <Link
-                  href={`/${locale}/projects`}
+                  href={`/${locale}/projects/${project.slug}`}
                   className="text-primary font-medium inline-flex items-center hover:underline"
                 >
                   {tCommon("readMore")}
@@ -271,27 +278,26 @@ function ProjectsSection({ locale }: { locale: string }) {
   );
 }
 
-function NewsSection({ locale }: { locale: string }) {
+interface NewsItem {
+  id: string;
+  title: unknown;
+  excerpt: unknown;
+  publishedAt: Date | null;
+  slug: string;
+}
+
+function NewsSection({ locale, news }: { locale: string; news: NewsItem[] }) {
   const t = useTranslations("home.news");
   const tCommon = useTranslations("common");
 
-  const news = [
-    {
-      title: "KLD Algeria Expands Operations",
-      date: "December 20, 2025",
-      excerpt: "New office opening in Hassi Messaoud to better serve our clients.",
-    },
-    {
-      title: "Partnership with Sonatrach",
-      date: "December 15, 2025",
-      excerpt: "Strategic partnership agreement signed for digital transformation projects.",
-    },
-    {
-      title: "Innovation Award 2025",
-      date: "December 10, 2025",
-      excerpt: "KLD Algeria receives recognition for technological innovation.",
-    },
-  ];
+  const formatDate = (date: Date | null) => {
+    if (!date) return "";
+    return new Intl.DateTimeFormat(locale, {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    }).format(new Date(date));
+  };
 
   return (
     <section className="py-20">
@@ -306,22 +312,22 @@ function NewsSection({ locale }: { locale: string }) {
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
-          {news.map((item, index) => (
+          {news.map((item) => (
             <article
-              key={index}
+              key={item.id}
               className="border dark:border-gray-800 rounded-xl p-6 hover:border-primary transition-colors"
             >
               <time className="text-sm text-gray-500 dark:text-gray-400">
-                {item.date}
+                {formatDate(item.publishedAt)}
               </time>
               <h3 className="text-xl font-semibold text-gray-900 dark:text-white mt-2 mb-3">
-                {item.title}
+                {getLocalizedText(item.title, locale)}
               </h3>
-              <p className="text-gray-600 dark:text-gray-400 mb-4">
-                {item.excerpt}
+              <p className="text-gray-600 dark:text-gray-400 mb-4 line-clamp-2">
+                {getLocalizedText(item.excerpt, locale)}
               </p>
               <Link
-                href={`/${locale}/news`}
+                href={`/${locale}/news/${item.slug}`}
                 className="text-primary font-medium inline-flex items-center hover:underline"
               >
                 {tCommon("readMore")}

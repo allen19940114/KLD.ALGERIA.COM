@@ -39,11 +39,23 @@
     },
     "about": {
       "title": "About KLD Algeria",
-      "description": "Kunlun Digital Technology (KLD) Algeria is a subsidiary of China National Petroleum Corporation, dedicated to providing world-class digital solutions for the energy sector."
+      "description": "Kunlun Digital Technology (KLD) Algeria is a subsidiary of China National Petroleum Corporation, dedicated to providing world-class digital solutions for the energy sector.",
+      "point1": "World-class digital technology expertise",
+      "point2": "Deep understanding of oil & gas industry",
+      "point3": "Proven track record in Algeria",
+      "point4": "Commitment to innovation and excellence"
     },
     "services": {
       "title": "Our Services",
-      "description": "Comprehensive digital solutions for the oil and gas industry"
+      "description": "Comprehensive digital solutions for the oil and gas industry",
+      "digital": "Digital Solutions",
+      "digitalDesc": "Cutting-edge digital transformation solutions for the energy sector.",
+      "data": "Data Management",
+      "dataDesc": "Advanced data analytics and management systems for oil & gas operations.",
+      "security": "Cybersecurity",
+      "securityDesc": "Comprehensive security solutions to protect critical infrastructure.",
+      "automation": "Automation",
+      "automationDesc": "Industrial automation and control systems for enhanced efficiency."
     },
     "projects": {
       "title": "Featured Projects",
