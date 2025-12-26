@@ -2,6 +2,29 @@
 
 ---
 
+### [2025-12-26 07:00] - Session 8
+
+**修复内容**: 设置页面 SessionProvider 错误
+
+**问题描述**:
+访问 `/zh/admin/settings` 时报错 `[next-auth]: useSession must be wrapped in a <SessionProvider />`。
+
+**问题分析**:
+settings 页面是客户端组件，使用了 `useSession` hook，但没有被 `SessionProvider` 包裹。
+
+**修改的文件**:
+- `src/app/[locale]/admin/settings/page.tsx` - 设置页面
+
+**修复方案**:
+移除 `useSession` 依赖，使用默认值初始化用户名和邮箱。认证已在服务端 layout 中验证，客户端不需要再次获取 session。
+
+**构建结果**:
+- ✅ 编译成功
+- ✅ TypeScript 类型检查通过
+- ✅ 108 个页面路由正常
+
+---
+
 ### [2025-12-26 06:00] - Session 7
 
 **修复内容**: 媒体管理页面 TypeError 错误

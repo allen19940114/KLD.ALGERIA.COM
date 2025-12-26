@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import { useTranslations } from "next-intl";
 import { Save, User, Lock, Globe, Palette, RefreshCw } from "lucide-react";
 import { Button, Input } from "@/components/ui";
-import { useSession } from "next-auth/react";
 
 interface Settings {
   id: string;
@@ -14,12 +13,11 @@ interface Settings {
 
 export default function AdminSettingsPage() {
   const t = useTranslations("admin");
-  const { data: session } = useSession();
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [settings, setSettings] = useState<Settings[]>([]);
-  const [profileName, setProfileName] = useState("");
-  const [profileEmail, setProfileEmail] = useState("");
+  const [profileName, setProfileName] = useState("Admin");
+  const [profileEmail, setProfileEmail] = useState("admin@kld-algeria.com");
   const [currentPassword, setCurrentPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -39,11 +37,7 @@ export default function AdminSettingsPage() {
 
   useEffect(() => {
     fetchSettings();
-    if (session?.user) {
-      setProfileName(session.user.name || "");
-      setProfileEmail(session.user.email || "");
-    }
-  }, [session]);
+  }, []);
 
   const getSettingValue = (key: string, lang: string = "en") => {
     const item = settings.find((s) => s.key === key);
