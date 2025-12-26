@@ -2,6 +2,31 @@
 
 ---
 
+### [2025-12-26 06:00] - Session 7
+
+**修复内容**: 媒体管理页面 TypeError 错误
+
+**问题描述**:
+访问 `/zh/admin/media` 时报错 `TypeError: Cannot read properties of undefined (reading 'toLowerCase')`。
+
+**问题分析**:
+前端代码使用 `item.originalName`，但数据库字段实际是 `name`。字段名不匹配导致 undefined 错误。
+
+**修改的文件**:
+- `src/app/[locale]/admin/media/page.tsx` - 媒体管理页面
+
+**修复内容**:
+1. 更新 `MediaItem` 接口，将 `originalName` 改为 `name`
+2. 更新所有使用 `item.originalName` 的地方为 `item.name`
+3. 在过滤器中添加空值检查：`(item.name || "").toLowerCase()`
+
+**构建结果**:
+- ✅ 编译成功
+- ✅ TypeScript 类型检查通过
+- ✅ 108 个页面路由正常
+
+---
+
 ### [2025-12-26 00:30] - Session 1
 
 **当前功能**: F001-F021 全部功能初始实现

@@ -20,11 +20,11 @@ import { Input, Button } from "@/components/ui";
 
 interface MediaItem {
   id: string;
-  filename: string;
-  originalName: string;
+  name: string;
   mimeType: string;
   size: number;
   url: string;
+  type: string;
   createdAt: string;
 }
 
@@ -163,7 +163,7 @@ export default function AdminMediaPage() {
   };
 
   const filteredMedia = media.filter((item) =>
-    item.originalName.toLowerCase().includes(searchQuery.toLowerCase())
+    (item.name || "").toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   const storagePercent = Math.round((storage.used / storage.total) * 100);
@@ -295,14 +295,14 @@ export default function AdminMediaPage() {
                   {type === "image" ? (
                     <img
                       src={item.url}
-                      alt={item.originalName}
+                      alt={item.name}
                       className="w-full h-full object-cover"
                     />
                   ) : (
                     <div className="w-full h-full flex flex-col items-center justify-center">
                       <Icon className="h-8 w-8 text-gray-400 mb-2" />
                       <span className="text-xs text-gray-500 truncate px-2">
-                        {item.originalName}
+                        {item.name}
                       </span>
                     </div>
                   )}
@@ -322,7 +322,7 @@ export default function AdminMediaPage() {
                     </button>
                     <a
                       href={item.url}
-                      download={item.originalName}
+                      download={item.name}
                       className="p-2 bg-white rounded-lg hover:bg-gray-100 transition-colors"
                       title="Download"
                     >
@@ -374,7 +374,7 @@ export default function AdminMediaPage() {
                       <div className="flex items-center gap-3">
                         <Icon className="h-5 w-5 text-gray-400" />
                         <span className="text-gray-900 dark:text-white">
-                          {item.originalName}
+                          {item.name}
                         </span>
                       </div>
                     </td>
@@ -401,7 +401,7 @@ export default function AdminMediaPage() {
                         </button>
                         <a
                           href={item.url}
-                          download={item.originalName}
+                          download={item.name}
                           className="p-2 text-gray-500 hover:text-gray-700"
                         >
                           <Download className="h-4 w-4" />
